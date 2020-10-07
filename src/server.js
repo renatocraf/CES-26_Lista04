@@ -3,9 +3,12 @@ const bancoDeDados = require('./bancoDeDados');
 const upload = require('./upload')
 
 
+const fs = require('fs')
 const path = require('path'); //path pra poder andar pelos diretorios
 const express = require('express');
 const app = express();
+
+const caminho = path.join(__dirname,'../static', 'banco.json')
 
 //pasta com os arquivos estaticos
 app.use(express.static('static'));
@@ -20,9 +23,21 @@ app.get('/',(req,res,next)=>{
     res.render('index',{gravado:gravado});
 })
 
+// #####################
 app.get('/produtoscadastrados',(req,res,next)=>{
-    res.send(bancoDeDados.getProdutos())
+    produtos = bancoDeDados.getProdutos()
+    res.send()
 })
+
+app.get('/produtos',(req,res,next)=>{
+    fs.readFile(caminho,'utf-8',(err,conteudo)=>{
+        const config = JSON.parse(conteudo);
+        console.log(config[1])
+        res.render('index2',{valores:config})  
+    })
+    
+})
+// #######################
 
 app.get('/cadastrarproduto',(req,res,next)=>{
     resposta ={

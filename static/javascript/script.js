@@ -1,87 +1,3 @@
-// Add your code here
-var comBorda = {'border':'solid 2px red','background-color':'yellow','color':'red'}
-var selecionado = {'border':'solid 2px blue','background-color':'black','color':'white'}
-var semBorda = {'border':'none','background-color':'white','color':'black'}
-
-function Selecao(elemento){
-  $(elemento).mouseenter(function(){
-    if($(elemento).attr('id')!='selec'){
-      $(elemento).css(comBorda)
-
-    }})    
-  $(elemento).mouseleave(function(){
-    if($(elemento).attr('id')!='selec'){
-      $(elemento).css(semBorda)
-    }})
-    
-  $(elemento).click(function(){
-    $('#selec').parent().removeAttr('id')
-    $('#selec').removeAttr('id').css(semBorda)    
-    $(elemento).attr('id','selec').css(selecionado)
-    $(elemento).parent().attr('id','pai')
-    })
-}
-
-function attSelecao(){
-  $('.manip').each((i,e)=> new Selecao(e))
-} 
-
-function inserirAntes(){
-  let valor = $('#pai').attr('value')
-  if (valor == 1){
-    $('<div value='+valor+'><div class = "manip">Novo Elemento Antes</div ></div>').insertBefore('#pai')
-  }
-  else{
-    let hifen = ""
-    for (let i=0; i<valor;i++){
-      hifen = hifen+"-"
-    }
-    $('<div value = '+valor+'><div  class = "manip"> '+hifen+' Novo Elemento Antes Filho</div ></div>').insertBefore('#pai')
-  }
-  attSelecao()  
-}
-
-function inserirFilho(){
-  let valor = parseInt($('#pai').attr('value'))+1
-  let hifen = ""
-  for (let i=0; i<valor;i++){
-    hifen = hifen+"-"
-  }
-  console.log(hifen)
-  $('<div value = '+valor+'><div  class = "manip"> '+hifen+' Novo Elemento Filho</div ></div>').appendTo('#pai')
-  attSelecao()
-}
-
-function inserirDepois(){
-  let valor = $('#pai').attr('value')
-  if (valor ==1){
-    $('<div><div  class = "manip">Novo Elemento Depois</div ></div>').insertAfter('#pai')
-  }
-  else{
-    let hifen = ""
-      for (let i=0; i<valor;i++){
-        hifen = hifen+"-"
-      }
-    $('<div value = '+valor+'><div  class = "manip"> '+hifen+' Novo Elemento Depois Filho</div ></div>').insertAfter('#pai')
-  }
-  attSelecao()
-}
-
-function removerElemento(){
-  $('#selec').parent().remove()
-}
-
-function alterarNome(){
-  let valor = $('#mudarnome').val()
-  $('#selec').text(valor)
-}
-
-function mudarTipo(){
-  $('#selec')
-}
-attSelecao()
-
-
 
 function validarDados(){
     if (document.dados.nome.value == '') {
@@ -101,3 +17,97 @@ if(gravado){
     alert("Gravado com Sucesso!")
     gravado = false
 }
+
+function ajax(){
+  const config ={
+    metodo:"GET",
+    url: "./banco.json",// mudar local do arquivo
+    asinc: true,
+    sucesso(resposta){
+      const produtos = JSON.parse(resposta)
+      
+      const tabela = document.createElement('table')
+
+      //$(tabela).appendChild('thead')
+
+      let tr = document.createElement('tr')
+
+      let th = document.createElement('th')
+      th.innerHTML = "Id"
+      tr.appendChild(th)
+      th = document.createElement('th')
+      th.innerHTML = "Nome da Pessoa"
+      tr.appendChild(th)
+      th = document.createElement('th')
+      th.innerHTML = "Telefone"
+      tr.appendChild(th)
+      th = document.createElement('th')
+      th.innerHTML = "Produto"
+      tr.appendChild(th)
+      th = document.createElement('th')
+      th.innerHTML = "Valor"
+      tr.appendChild(th)
+
+      tabela.appendChild(tr)
+      
+      
+      for (i in produtos){
+        console.log(produtos[1].nomePessoa)
+        console.log(produtos[i].nomePessoa)
+        let id = document.createElement('td')
+        id.innerHTML = produtos[i].id
+
+        let nomePessoa = document.createElement('td')
+        nomePessoa.innerHTML = produtos[i].nomePessoa
+
+        let tel = document.createElement('td')
+        tel.innerHTML = produtos[i].tel
+
+        let nomeProduto = document.createElement('td')
+        nomeProduto.innerHTML  = produtos[i].nomeProduto
+
+        let valorProduto = document.createElement('td')
+        valorProduto.innerHTML  = produtos[i].valorProduto
+
+        let tr = document.createElement('tr')
+
+        tr.appendChild(id)
+        tr.appendChild(nomePessoa)
+        tr.appendChild(tel)
+        tr.appendChild(nomeProduto)
+        tr.appendChild(valorProduto)
+        
+        tabela.appendChild(tr)
+
+      }
+      $('#pedidos').append(tabela).css({"padding": "60px",
+        "margin" :  "50px","margin-top":"0px"});
+      $('table').addClass('table')
+    },
+    erro(e){
+      const msg = document.createTextNode(`${e.code}:${e.text}`)
+      $(msg).insertAfter('#pedidos')
+    }
+  }
+  const xhr = new XMLHttpRequest();
+  xhr.onreadystatechange = function(){
+    if(xhr.readyState == 4 && xhr.status == 200){
+      config.sucesso(xhr.response)
+    }
+    else if(xhr.status >= 400){
+      config.erro({
+        code: xhr.status,
+        text: xhr.statusText
+      })
+    }
+  }
+  xhr.open(config.metodo,config.url,config.asinc);
+  xhr.send();
+
+
+}
+
+
+
+
+

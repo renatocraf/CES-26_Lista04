@@ -5,9 +5,7 @@
     <title>Home</title>
     <script> 
         let gravado = false
-        if(<%=gravado%>){
-            gravado = <%=gravado%>
-        }
+        
         
      </script>
 </head>
@@ -52,11 +50,8 @@
         </div>
         <div>
             <h2>Verificar Pedidos Feitos:</h2>
+            <p><%=valores[1].nomePessoa%></p>
             (acesso de dados - mostra todos os pedidos feitos)
-            <div id="pedidos"> </div>      
-            <button type="submit" onclick="ajax()" class="btn btn-info">Verificar</button>
-
-            
         </div>
         <div>
             <h2>Mostre uma foto da sua compra!</h2>

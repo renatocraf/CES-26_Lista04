@@ -16,6 +16,15 @@
       margin-top:0px;
 
   }
+
+  #pedidos{
+    border-radius: solid 1px;
+  }
+
+  th,td{
+    width: 300px;
+  }
+
   #naoManipulavel{
     padding: 3%;
 
