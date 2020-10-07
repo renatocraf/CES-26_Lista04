@@ -1,0 +1,28 @@
+{
+  "name": "ces-26_lista04",
+  "version": "1.0.0",
+  "description": "Quarta lista de exercícios de CES-26",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "nodemon",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/renatocraf/CES-26_Lista04.git"
+  },
+  "author": "Carlos Renato de Andrade Figueiredo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/renatocraf/CES-26_Lista04/issues"
+  },
+  "homepage": "https://github.com/renatocraf/CES-26_Lista04#readme",
+  "dependencies": {
+    "ejs": "^3.1.5",
+    "express": "^4.17.1",
+    "multer": "^1.4.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  }
+}

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('head', { title: 'Home' }) %>
+    <title>Home</title>
+    <script> 
+        let gravado = false
+        if(<%=gravado%>){
+            gravado = <%=gravado%>
+        }
+        
+     </script>
+</head>
+<body>
+    <%- include('header') %>
+      <div id="borda">
+        <div>
+            <h2>Vendas CTA - Faça já o seu pedido.</h2>            
+        </div>
+        <div>
+            <h2>Faça o seu pedido de compra:</h2>
+            (form - nome da pessoa,telefone, nome da compra, valor da compra)
+            <div>
+                <form action="http://localhost:3030/cadastrarproduto" method="GET" onSubmit="return validarDados()" name="dados">
+                    <div class="form-group row">
+                        <label for="nome" class="col-sm-2 col-form-label">Nome</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" name="nome">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="telefone" class="col-sm-2 col-form-label">Telefone</label>
+                        <div class="col-sm-10">
+                            <input type="tel" class="form-control" name="telefone">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="nomeProduto" class="col-sm-2 col-form-label">Nome do Produto</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control text" name="nome_produto">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="email" class="col-sm-2 col-form-label">Valor do Produto</label>
+                        <div class="col-sm-10">
+                            <input type="number" step = "0.01" class="form-control number" name="valor">
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-info">Enviar</button>
+                </form>
+            </div>
+        </div>
+        <div>
+            <h2>Verificar Pedidos Feitos:</h2>
+            (acesso de dados - mostra todos os pedidos feitos)
+        </div>
+        <div>
+            <h2>Mostre uma foto da sua compra!</h2>
+            upload
+            <form action="http://127.0.0.1:3030/upload" method="POST" enctype="multipart/form-data"
+            onSubmit="return validarImagem()" name="imagem">
+            <div>
+
+            </div>
+            <div>
+                <input type="file" name="file" size="50" name="file" />
+            </div>
+            <button type="submit" class="btn btn-info">Enviar</button>
+        </form>
+        </div>
+
+
+      
+      <script src="javascript/script.js"></script>
+</body>
+</html>
