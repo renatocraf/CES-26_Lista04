@@ -1,12 +1,22 @@
 /* Add your styles here */
 
   header{
+
     padding: 10px;
     padding-left: 50px;
     background-image: linear-gradient(to right, rgba(224, 229, 255, 0.253), rgb(0, 17, 255));
     height: 100px;
     border-radius: 10px;
-    border : solid 2px rgba(0, 0, 0, 0.383);
+    /*border : solid 2px rgba(0, 0, 0, 0.383);*/
+  }
+
+  h1{
+    text-align: center;
+  }
+
+  .titulos{
+    margin-left: 50px;
+    margin-top: 10px;
   }
   
   form{
@@ -14,34 +24,23 @@
       border : solid 1px rgb(92, 89, 89);
       margin: 50px;
       margin-top:0px;
+      margin-bottom: 10px;
 
   }
 
-  #pedidos{
-    border-radius: solid 1px;
+  th{
+    background-color: rgba(107, 105, 105, 0.657);
   }
 
   th,td{
     width: 300px;
   }
+ 
+  #verifica{
+    margin-left: 50px;
+  }
 
-  #naoManipulavel{
-    padding: 3%;
-
+  #submissao{
+    margin: 20px;
   }
-  
-  
-  #manipulavel{
-    border-style: dotted;
-    border-radius: 30px;
-    margin: 5%;
-    padding: 20px;
-  }
-  
-  #borda{
-    border : solid 2px black;
-    border-radius: 10px;
-    
-  }
-  
   

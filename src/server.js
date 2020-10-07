@@ -18,26 +18,9 @@ app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, '../static', 'views'));
 
 
-app.get('/',(req,res,next)=>{
-    let gravado = false
-    res.render('index',{gravado:gravado});
+app.get('/',(req,res,next)=>{    
+    res.render('index');
 })
-
-// #####################
-app.get('/produtoscadastrados',(req,res,next)=>{
-    produtos = bancoDeDados.getProdutos()
-    res.send()
-})
-
-app.get('/produtos',(req,res,next)=>{
-    fs.readFile(caminho,'utf-8',(err,conteudo)=>{
-        const config = JSON.parse(conteudo);
-        console.log(config[1])
-        res.render('index2',{valores:config})  
-    })
-    
-})
-// #######################
 
 app.get('/cadastrarproduto',(req,res,next)=>{
     resposta ={
@@ -46,16 +29,13 @@ app.get('/cadastrarproduto',(req,res,next)=>{
         nomeProduto:req.query.nome_produto,
         valorProduto:req.query.valor
     }
-    // a ideia eh guardar esses valores num json (preciso )
-    console.log(resposta);    
-    bancoDeDados.salvarProdutos(resposta) 
-    let gravado = true   
-    res.render('index',{gravado:gravado})
+    // a ideia eh guardar esses valores num json (preciso )  
+    bancoDeDados.salvarProdutos(resposta)  
+    res.render('index')
 })
 
 app.post('/upload',upload.single('file'),(req,res) => {
-    let gravado = true
-    res.render('index',{gravado:gravado})
+    res.render('index')
 });
 
 app.listen(porta,()=>{
