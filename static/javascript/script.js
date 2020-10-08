@@ -98,7 +98,7 @@ function ajax(){
     }
     xhr.open(config.metodo,config.url,config.asinc);
     xhr.send();
-    $('#verifica').text ("Remover")
+    $('#verifica').text ("Ocultar")
   }
   else{
     verificado = false

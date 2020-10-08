@@ -2,7 +2,6 @@ const porta = 3030;
 const bancoDeDados = require('./bancoDeDados');
 const upload = require('./upload')
 
-
 const fs = require('fs')
 const path = require('path'); //path pra poder andar pelos diretorios
 const express = require('express');
@@ -34,8 +33,8 @@ app.get('/cadastrarproduto',(req,res,next)=>{
     res.render('index')
 })
 
-app.post('/upload',upload.single('file'),(req,res) => {
-    res.render('index')
+app.post('/upload',upload.single('file'),(req,res) => {     
+        res.render('index')        
 });
 
 app.listen(porta,()=>{
