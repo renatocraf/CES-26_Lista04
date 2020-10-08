@@ -3,12 +3,19 @@
 
 Versão do NodeJs utilizada: v14.13.0
 
----
+
 ---
 
 Após download do projeto, deve-se executar o NPM para instalação das bibliotecas:
 ```
 npm i
+```
+
+Dentro do diretório 'static' deve-se criar a pasta upload(essa pasta foi incluída no .gitgnore):
+
+```
+cd static
+mkdir upload
 ```
 Para iniciar a aplicação, o comando é:
 
@@ -16,7 +23,7 @@ Para iniciar a aplicação, o comando é:
 npm start
 ```
 
----
+
 ---
 
 O Exercício consistiu em utilizar o Node e o módulo Express para desenvolver uma aplicação no servidor que atende os seguintes requisitos:
@@ -31,7 +38,7 @@ mouse em um botão, acessa um conjunto de
 dados em JSON e os exibe no lugar de um
 parágrafo em uma página HTML.
 
----
+
 ---
 
 
